@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>client</th>
                 <th>DayHourReserv</th>
                 <th>NbPeople</th>
                 <th>Created_at</th>
@@ -19,6 +20,7 @@
         {% for reservation in reservations %}
             <tr>
                 <td>{{ reservation.id }}</td>
+                <td>{{ reservation.client }}</td>
                 <td>{{ reservation.dayHourReserv ? reservation.dayHourReserv|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ reservation.nbPeople }}</td>
                 <td>{{ reservation.createdAt ? reservation.createdAt|date('Y-m-d H:i:s') : '' }}</td>

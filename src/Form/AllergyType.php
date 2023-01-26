@@ -13,7 +13,6 @@ class AllergyType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('users')
         ;
     }
 

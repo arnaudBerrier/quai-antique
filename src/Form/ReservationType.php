@@ -14,7 +14,6 @@ class ReservationType extends AbstractType
         $builder
             ->add('dayHourReserv')
             ->add('nbPeople')
-            ->add('created_at')
             ->add('client')
         ;
     }
