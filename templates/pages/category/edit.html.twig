@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Quai antique - Modification catégorie{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1>Modification d'une catégorie</h1>
+		<a href="{{ path('category.index') }}" class="btn btn-sm btn-primary">Retour</a>
+
+	{{ form_start(form) }}
+
+
+        <div class="form-group">
+			{{ form_label(form.name) }}
+			{{ form_widget(form.name) }}
+		
+			<div class="form-error">
+				{{ form_errors(form.name) }}
+			</div>
+    	</div>
+		<div class="form-group">
+			{{ form_row(form.submit) }}
+    	</div>
+	{{ form_end(form) }}
+	</div>
+{% endblock %}
