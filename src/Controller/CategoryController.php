@@ -105,6 +105,13 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    /**
+     * This function is used to delete a category
+     *
+     * @param Category $category
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/category/delete/{id}', 'category.delete', methods:['GET'])]
     public function delete(Category $category, EntityManagerInterface $manager): Response
     {

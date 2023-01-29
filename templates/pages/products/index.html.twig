@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Notre carte{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+  {% for message in app.flashes('success') %}
+		<div class='alert alert-success mt-4'>
+		{{ message }}
+		</div>
+	{% endfor %}
+   {% for message in app.flashes('info') %}
+		<div class='alert alert-info mt-4'>
+		{{ message }}
+		</div>
+	{% endfor %}
+    {% for message in app.flashes('warning') %}
+		<div class='alert alert-warning mt-4'>
+		{{ message }}
+		</div>
+	{% endfor %}
+    <h1>Notre carte</h1>
+{% if not product.items is same as ([]) %}
+
+    <div class="count">
+    <span class="badge bg-light">
+    Il y a 
+    {{ product.getTotalItemCount }} plat(s).
+    </span>
+    </div>
+
+    <table class="table table-hover mt-4">
+  <thead>
+  </thead>
+  <tbody>
+      {% for products in product %}
+    <tr class="table-active">
+      <th scope="row">{{ products.name }}</th>
+      <th scope="row">{{ products.description }}</th>
+      <th scope="row">{{ products.price }}</th>
+      <th scope="row">{{ products.category }}</th>
+      <td><a href="{{ path('products.edit', {id : products.id }) }}" class="btn btn-sm btn-info"><i class="fa-solid fa-pen-to-square"></i></a></td>
+      <td><a href="{{ path('products.delete', {id : products.id }) }}" class="btn btn-sm btn-warning"><i class="fa-solid fa-trash"></i></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="navigation d-flex justify-content-center mt-4">
+    {{ knp_pagination_render(product) }}
+</div>
+{% else %}
+<span class="badge bg-light">Aucun produit.</span>
+{% endif %}
+
+<a href="{{ path('products.new') }}" class="btn btn-sm btn-primary">Nouveau produit</a>
+</div>
+
+{% endblock %}
