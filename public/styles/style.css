@@ -2,8 +2,19 @@ html {
   height: 100%;
 }
 body {
+  background-image: url(/img/bg-paper-brown@3x.jpg);
+  background-repeat: repeat;
   min-height: 94%;
   position: relative;
+}
+
+h1 {
+
+  display: flex;
+  justify-content: center;
+}
+
+.carousel {
 }
 .footer-page {
   position: absolute;

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Nos formules{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+  {% for message in app.flashes('success') %}
+		<div class='alert alert-success mt-4'>
+		{{ message }}
+		</div>
+	{% endfor %}
+   {% for message in app.flashes('info') %}
+		<div class='alert alert-info mt-4'>
+		{{ message }}
+		</div>
+	{% endfor %}
+    {% for message in app.flashes('warning') %}
+		<div class='alert alert-warning mt-4'>
+		{{ message }}
+		</div>
+	{% endfor %}
+    <h1>Nos formules</h1>
+{% if not menus.items is same as ([]) %}
+
+    <div class="count">
+    <span class="badge bg-light">
+    Il y a 
+    {{ menus.getTotalItemCount }} formule(s).
+    </span>
+    </div>
+
+    <table class="table table-hover mt-4">
+  <thead>
+  </thead>
+  <tbody>
+      {% for menu in menus %}
+    <tr class="table-active">
+      <th scope="row">{{ menu.name }}</th>
+      <th scope="row">{{ menu.description }}</th>
+      <th scope="row">{{ menu.price|number_format(2, '.', ',') }} €</th>
+      <td><a href="{{ path('menu.edit', {id : menu.id }) }}" class="btn btn-sm btn-info"><i class="fa-solid fa-pen-to-square"></i></a></td>
+      <td><a href="{{ path('menu.delete', {id : menu.id }) }}" class="btn btn-sm btn-warning"><i class="fa-solid fa-trash"></i></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="navigation d-flex justify-content-center mt-4">
+    {{ knp_pagination_render(menus) }}
+</div>
+{% else %}
+<span class="badge bg-light">Aucune formule.</span>
+{% endif %}
+
+<a href="{{ path('menu.new') }}" class="btn btn-sm btn-primary">Nouvelle formule</a>
+</div>
+{% endblock %}

@@ -38,7 +38,7 @@
     <tr class="table-active">
       <th scope="row">{{ products.name }}</th>
       <th scope="row">{{ products.description }}</th>
-      <th scope="row">{{ products.price }}</th>
+      <th scope="row">{{ products.price|number_format(2, '.', ',') }} €</th>
       <th scope="row">{{ products.category }}</th>
       <td><a href="{{ path('products.edit', {id : products.id }) }}" class="btn btn-sm btn-info"><i class="fa-solid fa-pen-to-square"></i></a></td>
       <td><a href="{{ path('products.delete', {id : products.id }) }}" class="btn btn-sm btn-warning"><i class="fa-solid fa-trash"></i></a></td>
