@@ -15,6 +15,21 @@ use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class UserController extends AbstractController
 {
+    #[Route('/user/{id}', name: 'user.index', methods: ['GET', 'POST'])]
+    public function index(): Response
+    {
+        // if (!$this->getUser()) {
+        //     return $this->redirectToRoute('security.login');
+        // }
+
+        // if ($this->getUser() !== $user) {
+        //     return $this->redirectToRoute('home.index');
+        // }
+        return $this->render('pages/user/index.html.twig', [
+            'controller_name' => 'UserController'
+        ]);
+    }
+
     /**
      * This controller allow us to edit user's profile
      *
@@ -47,7 +62,7 @@ class UserController extends AbstractController
                     'Les informations de votre compte ont bien été modifiées.'
                 );
 
-                return $this->redirectToRoute('home.index');
+                return $this->redirectToRoute('user.index');
             } else {
                 $this->addFlash(
                     'warning',

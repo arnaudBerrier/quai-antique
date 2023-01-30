@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Quai Antique - Profil
+{% endblock %}
+
+
+{% block body %}
+	<div class="container -mt-4">
+	<div class="content">
+      <h1>Mon espace</h1>
+      <h2>Mes informations</h2>
+      <div class="info-container">
+        <ul>
+          <li>
+            <h5>Prénom :</h5>
+            <p>{{ app.user.firstname }}</p>
+          </li>
+          <li>
+            <h5>Nom :</h5>
+            <p>{{app.user.lastname}}</p>
+          </li>
+          <li>
+            <h5>Email :</h5>
+            <p>{{app.user.email}}</p>
+          </li>
+        </ul>
+
+          <a type="button" class="nav-link btn btn-outline-primary mt-4" href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
+
+          <a type="button" class="nav-link btn btn-outline-primary mt-4" href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mon profil</a>
+
+      </div>
+
+	</div>
+	</div>
+{% endblock %}
