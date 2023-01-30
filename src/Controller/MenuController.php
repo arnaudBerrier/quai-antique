@@ -14,6 +14,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MenuController extends AbstractController
 {
+    /**
+     * This function display all menus
+     *
+     * @param MenuRepository $repository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/menu', name: 'menu.index', methods:['GET'])]
     public function index(MenuRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
@@ -27,6 +35,13 @@ class MenuController extends AbstractController
         ]);
     }
 
+    /**
+     * This function is used to create a menu
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/menu/new', name: 'menu.new', methods:['GET', 'POST'])]
     public function new(Request $request,
     EntityManagerInterface $manager): Response
@@ -55,6 +70,14 @@ class MenuController extends AbstractController
         ]);
     }
 
+    /**
+     * This function is used to edit a menu
+     *
+     * @param Menu $menu
+     * @param EntityManagerInterface $manager
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/menu/edit/{id}', 'menu.edit', methods:['GET', 'POST'])]
     public function edit(Menu $menu, EntityManagerInterface $manager, Request $request): Response
     {
@@ -82,6 +105,14 @@ class MenuController extends AbstractController
         ]);
     }
 
+
+    /**
+     * This function is used to delete a menu
+     *
+     * @param Menu $menu
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/menu/delete/{id}', 'menu.delete', methods:['GET'])]
     public function delete(Menu $menu, EntityManagerInterface $manager): Response
     {
