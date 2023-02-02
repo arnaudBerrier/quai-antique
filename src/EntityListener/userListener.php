@@ -23,6 +23,7 @@ class UserListener
     {
         $this->encodePassword($user);
     }
+    
 	/**
      * Encode password based on plain password
      *
