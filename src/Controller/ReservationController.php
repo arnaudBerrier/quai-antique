@@ -39,7 +39,7 @@ class ReservationController extends AbstractController
 
             $reservation = $form->getData();
             $reservation->setEmail($email);
-            
+            //dd($reservation); 
             $reservDate = $reservation->getCreatedAt();
             $dispoPlace = $gestion->getRemainingSeatsForInterval($reservDate);
             
@@ -54,7 +54,11 @@ class ReservationController extends AbstractController
                 );
             } else {
                     // dd($dispoPlace);
-                    return $this->redirectToRoute('products.index');
+                    $this->addFlash(
+                        'warning',
+                        'Votre réservation n\'a pas été prise en compte !'
+                    );
+                    return $this->redirectToRoute('app_reservation');
                 }
         }
         return $this->render('pages/reservation/index.html.twig', [

@@ -15,7 +15,7 @@ class GestionRestaurant
     public function __construct(EntityManagerInterface $manager)
     {
         $this->doctrine = $manager; 
-        $this->maxSeats = 20;
+        $this->maxSeats = 10;
         $this->occupedTime = new \DateInterval("PT2H");
 	}
     public function getRemainingSeatsForInterval(DateTimeImmutable $dateTime) 
