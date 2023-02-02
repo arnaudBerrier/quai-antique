@@ -40,8 +40,8 @@ class ReservationController extends AbstractController
             $reservation = $form->getData();
             $reservation->setEmail($email);
             //dd($reservation); 
-            $reservDate = $reservation->getCreatedAt();
-            $dispoPlace = $gestion->getRemainingSeatsForInterval($reservDate);
+            $reservDate_at = $reservation->getReservDateAt();
+            $dispoPlace = $gestion->getRemainingSeatsForInterval($reservDate_at);
             
             if ($dispoPlace >= $reservation->getNumberSeat()){
 

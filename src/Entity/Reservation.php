@@ -24,15 +24,15 @@ class Reservation
     #[ORM\Column(length:255, nullable:true)]
     private ?string $allergy = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $reservDate = null;
-
 
     #[ORM\Column]
     private ?\DateTimeImmutable $created_At = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     private ?User $user = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $reservDate_at = null;
 
 
     public function __construct()
@@ -82,17 +82,6 @@ class Reservation
 
         return $this;
     }
-    public function getReservDate(): ?\DateTimeInterface
-    {
-        return $this->reservDate;
-    }
-
-    public function setReservDate(\DateTimeInterface $reservDate): self
-    {
-        $this->reservDate = $reservDate;
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -114,6 +103,18 @@ class Reservation
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getReservDateAt(): ?\DateTimeImmutable
+    {
+        return $this->reservDate_at;
+    }
+
+    public function setReservDateAt(\DateTimeImmutable $reservDate_at): self
+    {
+        $this->reservDate_at = $reservDate_at;
 
         return $this;
     }
