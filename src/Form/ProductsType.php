@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProductsType extends AbstractType
 {
@@ -35,6 +36,12 @@ class ProductsType extends AbstractType
                 new Assert\NotBlank()
             ]
         ])
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image du plat',
+                'label_attr' => [
+                    'class' => 'form-label mt-4'
+                ]
+            ])
             ->add('description', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control'
