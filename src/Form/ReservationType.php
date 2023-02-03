@@ -44,7 +44,7 @@ class ReservationType extends AbstractType
                 'attr' => [
                     'class' => 'btn btn-primary btn-sm mt-4'
                 ],
-                'label' => "S'inscrire"
+                'label' => "Reservez"
             ])
         ;
     }
